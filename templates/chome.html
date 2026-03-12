@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportune - A Placement Portal</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/chome.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&family=Vast+Shadow&display=swap" rel="stylesheet">
+</head>
+<body>
+                                                <!-- HEADER -->
+    <header id="header">
+        <a id="naam" href="{{ url_for('chome')}}">
+            <div class="name">
+                <h1 id="Opportune">Opportune</h1>
+                <p id="line">Your Placement Support</p>
+            </div>
+        </a>
+
+  
+        </div>
+        <nav class="nav">
+            <a href="{{ url_for('chome') }}">Home</a>
+            <hr>
+            <a href="{{ url_for('cprofile') }}">Profile</a>
+        </nav>
+    </header>
+    <main>
+        <div id="plate" class="appli">
+            <h2>Applications Received</h2>
+
+            {% for app in applications %}
+
+            <div class="app-card">
+                <h4>{{ app.drive.job_role }}</h4>
+                <p>Student Name : {{ app.student.name }}</p>
+                <p>Status : {{ app.status }}</p>
+
+                <div class="action">
+                    
+                    {% if app.status == "applied" %}
+                    <a href="/update_status/{{ app.id }}/shortlisted">Shortlist</a>
+                    <a href="/update_status/{{ app.id }}/rejected">Reject</a>
+                    <a href="/update_status/{{ app.id }}/selected">Select</a>
+                    {% elif app.status == "shortlisted" %}
+                    <span class="badge shortlisted">Shortlisted</span>
+                    <a href="/update_status/{{ app.id }}/selected">Select</a>
+                    {% elif app.status == "selected" %}
+
+                    <span class="badge selected">Accepted</span>
+                    {% endif %}
+                
+                </div>
+
+                {% if app.student.resume %}
+                <a href="/download_resume/{{ app.student.resume }}">Download Resume</a>
+                {% else %}
+                No Resume
+                {% endif %}
+                
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <div id="plate" class="create">
+            <h2>Create A New Drive</h2>
+            <form action="{{ url_for('create_drive') }}" method="post">
+                <div class="ele">
+                    <h3>Job Role</h3>
+                    <input type="text" name="job_role">
+                </div>
+                <div class="ele">
+                    <h3>Eligibility</h3>
+                    <input type="text" name="eligibility" placeholder="BTech, CS">
+                </div>
+                <div class="ele">
+                    <h3>Requirements</h3>
+                    <input type="text" name="requirements" placeholder="Flask, Jinja">
+                </div>
+
+                <div class="ele">
+                    <h3>Numbers of Openings</h3>
+                    <input type="number" name="openings">
+                </div>
+                <div class="btn">
+                    <button type="submit" id="driveBtn" onclick="">Post Drive</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+</body>
+</html>

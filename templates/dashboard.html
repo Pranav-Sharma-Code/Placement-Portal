@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportune - A Placement Portal</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&family=Vast+Shadow&display=swap" rel="stylesheet">
+    </head>
+<body>
+
+
+
+    <!-- HEADER -->
+    <header id="header" class="plate">
+        <a id="naam" href="{{ url_for('home')}}">
+            <div class="name">
+                <h1 id="Opportune">Opportune</h1>
+                <p id="line">Your Placement Support</p>
+            </div>
+        </a>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search opportunities..." class="search-input" onkeydown="handleKeyPress(event)">
+            <span onclick="triggerSearch()" class="search-icon">
+                <img width="25px" src="https://cdn-icons-png.flaticon.com/128/5636/5636698.png" alt="">
+            </span>
+        </div>
+        <nav class="nav">
+            <a href="{{ url_for('home') }}">Home</a>
+            <hr>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <hr>
+            <a href="{{ url_for('profile') }}">Profile</a>
+        </nav>
+    </header>
+
+                                                        <!-- flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    
+                                                      <!--record-->
+    <main>
+        <div class="sec">
+            <h2>Current Status</h2>
+        </div>
+        <div class="xplate">
+            <div class="xcard">
+                <h2 class="num" style="color: #059669;">{{ offers }}</h2>
+                <h4>Offer Received</h4>
+            </div>
+            <div class="xcard">
+                <h2 class="num" style="color: #2563eb;">{{ interviews }}</h2>
+                <h4>Active Interviews</h4>
+            </div>
+            <div class="xcard">
+                <h2 class="num" style="color: #d97706;">{{ applied }}</h2>
+                <h4>Applied Opportunities</h4>
+            </div>
+            <div class="xcard">
+                <h2 class="num" style="color: #475569;">{{ drives }}</h2>
+                <h4>Total Opportunities</h4>
+            </div>
+        </div>
+                                                      <!--Applied Applications-->
+         <div class="sec">
+            <h2>Applied Opportunities</h2>
+        </div>
+        <section class="plate">
+            {% for app in applications %}
+
+            <div class="card">
+                <div class="card-title">
+                    <h3>{{ app.drive.job_role }}</h3>
+                    <h4>Company {{ app.drive.company.name }}</h4>
+                </div>
+                <div class="details">
+                    <div>
+                        <h5>Eligibility</h5>
+                        <ul class="list">
+                            <li>{{ app.drive.eligibility }}</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>Requirements</h5>
+                        <ul class="list">
+                            <li>{{ app.drive.requirements }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <span class="status {{ app.status }}">
+                    {{ app.status }}
+                </span>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+    
+</body>
+</html>

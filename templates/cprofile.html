@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportune - A Placement Portal</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/cprofile.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&family=Vast+Shadow&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+    <header class="header">
+            <div class="back">
+                <button  onclick="history.back()"><span class="material-symbols-outlined">arrow_back</span></button>
+            </div>
+            <h1>Profile</h1>
+            <div class="back">
+                <button onclick="window.location.href='/logout'"><span class="material-symbols-outlined">logout</span></button>
+            </div>
+    </header>
+    <main>
+        <div class="plate">
+            <div class="ele">
+                <h3>Company Name</h3>
+                <p>{{ user.name }}</p>
+            </div>
+
+            <div class="ele">
+                <h3>Email</h3>
+                <p>{{ user.email }}</p>  
+            </div>
+
+            <div class="ele">
+                <h3>Number</h3>
+                <p>{{ user.number }}</p>
+            </div>
+            
+            <p class="stat">
+                <b>Status:</b>
+                {% if user.approved %}
+                <span class="green">Approved</span>
+                {% else %}
+                <span class="yellow">Pending Approval</span>
+                {% endif %}
+            </p>
+            
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Opportune - A Placement Portal</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&family=Vast+Shadow&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alerts">
+                {% for category, message in messages %}
+                <div class="alert {{ category }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        <form action="{{ url_for('register') }}" method="post" class="plate">
+            <h1>Opportune</h1>
+            <p>Your Placement Support</p>
+            
+        
+
+            <input type="hidden" name="role" id="role">
+
+            <div class="res">
+                <div class="d">
+                    <h3>Full Name</h3>
+                    <input type="text" name="name" required>
+                </div>
+
+                <div class="d">
+                    <h3>Email</h3>
+                    <input type="email" name="email"  placeholder="example@gmail.com" required>
+                </div>
+
+                <div class="d">
+                    <h3>Number</h3>
+                    <input type="text" name="number" >
+                </div>
+
+                <div class="d">
+                    <h3>Password</h3>
+                    <input type="password" name="password" required>
+                </div>
+            </div>
+
+            <div>
+                <h3 id="register">Register as</h3>
+                <div class="opt">
+                <button type="submit" onclick="setRole('student')" value="student" style="background: linear-gradient(0deg,rgba(144, 238, 144, 0.100),#d8a0ed10); color: green;">Student</button>
+                <button type="submit" onclick="setRole('company')" value="company" style="background: linear-gradient(0deg,rgba(135, 207, 235, 0.100),#d8a0ed10); color: blue;">Company</button>
+            </div>
+            </div>
+        </form>
+    <p>Already Have an Account?<a href="{{url_for('login')}}">Login as a Student</a></p>
+
+    </main>
+</body>
+<script>
+    function setRole(role){
+    document.getElementById("role").value = role;
+    }
+
+    setTimeout(() => {
+        document.querySelectorAll(".alert").forEach(el => {
+            el.style.display = "none";
+        });
+    }, 3000);
+
+</script>
+</html>

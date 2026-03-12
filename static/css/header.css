@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+}
+
+body{
+    padding: 20px;
+    line-height: 1.6;
+    scrollbar-width:none;      
+    -ms-overflow-style:none; 
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+
+/* HEADER */
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #7c5d8722;
+    margin: 20px auto;
+    flex-wrap: wrap;   
+}
+.plate{
+    background: linear-gradient(180deg,white,#d8a0ed21);
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: 90%;
+    min-height: 100px;
+    margin-left: 5%;
+    padding: 15px;
+    border-radius: 16px;
+}
+
+/* LOGO */
+.name{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+#naam{
+    text-decoration: none !important;
+    color: inherit;
+}
+
+#Opportune{
+    font-family: "Vast Shadow", serif;
+    font-weight: 400;
+    color: #2b0134;
+    font-style: normal;
+}
+
+#line{
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+    margin:  -8px 80px;
+}
+
+/* SEARCH */
+.search-bar{
+    position: relative;
+    flex: 1 ;
+    max-width: 300px; 
+    margin: 20px 20px 20px 0px ;
+}
+
+.search-input{
+    width: 100%;
+    padding: 10px 20px 10px 40px;
+    border-radius: 50px;
+    border: 1.5px ridge #eee;
+    background: #faf8fbfb;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border: 1.5px ridge black;
+    background: white;
+    box-shadow: 0 0 0 4px #e1a6f851;
+}
+
+.search-icon img{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: 0.3s ease;
+}
+
+.search-icon img:hover{
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* Navigation */
+.nav{
+    display: flex;
+    gap: 15px;
+    margin: 10px;
+}
+
+.nav a{
+    text-decoration: none;
+    color: #390743;
+    font-family: "Tektur", sans-serif;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.nav a:hover{
+    transform: scale(0.9);
+    color: #5806bcda;
+}
+@media (max-width: 768px){
+
+    #header{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .search-bar{
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .nav{
+        flex-direction: column;
+        align-items: center;
+    }
+}

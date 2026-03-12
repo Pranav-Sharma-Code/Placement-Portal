@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+}
+
+body{
+    padding: 20px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 3rem;
+    scrollbar-width:none;      
+    -ms-overflow-style:none; 
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.back button{
+    background: #d8a0ed42;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.back button:hover{
+    background-color: #d8a0ed77;
+    transform: scale(0.85);
+}
+
+header{
+    display: flex;
+    gap: 20%;
+    justify-content: center;
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.header h1{
+    transform: translateY(-16px);
+}
+
+.plate{
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    background: linear-gradient(180deg,white,#d8a0ed21);
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 16px;
+}
+
+
+#pform{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: auto auto auto 10%;
+    gap: 40px;
+    column-gap: 25%;
+}
+
+.ele{
+    column-gap: 20%;
+}
+
+.ele h3{
+    margin-left: 12px;
+}
+
+.ele input{
+   border-radius: 16px;
+   margin-top: 10px;
+   background: linear-gradient(290deg,white,#ebc9fd96);
+   border: none;
+   padding: 10px 35px 10px 12px;
+   height: 60%;
+   width: 80%;
+}
+
+.ele input:hover{
+    transform: scale(0.95);
+}
+
+
+.ele select{
+    appearance: none;
+    background: linear-gradient(290deg, white, #ebc9fd96);
+    border: none;
+    border-radius: 16px;
+    padding: 10px 35px 10px 12px;
+    width: 80%;
+    height: 60%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.ele select:hover{
+    transform: scale(0.95);
+}
+
+#course option,
+#branch option{
+    background: white;
+    color: black;
+    padding: 10px;
+}
+
+.btn{
+    margin: 6% 5% auto auto;
+    display: flex;
+    justify-content: end;
+    gap: 10px;   
+}
+
+.btn button{
+    background: #390743;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s; 
+    width: 20%;
+}
+
+.btn button:hover{
+    transform: scale(0.95);
+}
+
+#saveBtn,
+#cancelBtn{
+    display: none;
+}
